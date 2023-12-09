@@ -9,6 +9,15 @@ describe("On Day 3", () => {
     ).toBe("4361");
   });
 
+  it(`part2 is identity function`, () => {
+    expect(
+      day3.solveForPartTwo(
+        `467..114..\n...*......\n..35..633.\n......#...\n617*......\n.....+.58.\n..592.....\n......755.\n...$.*....\n.664.598..`
+      )
+    ).toBe("467835");
+  });
+
+
   describe("getNumbers", () => {
     it("should parse a string and return an object with only numbers and indices", () => {
       expect(day3.getNumbers("467..114..")).toStrictEqual([
