@@ -5,8 +5,6 @@ class Day4 extends Day {
     super(4);
   }
 
-  cardMap = new Map<string, number>();
-
   parseCards(input: string) {
     return input === ""
       ? []
@@ -49,7 +47,7 @@ class Day4 extends Day {
   }
 
   cardMatches(input: string[][][]) {
-    return [...input].map((line) => {
+    return input.map((line) => {
       const [winningNums, cardNumbers] = line;
       let matches = 0;
       winningNums.forEach((number) => {
@@ -66,20 +64,16 @@ class Day4 extends Day {
   }
 
   solveForPartTwo(input: string): string {
-
-
     const cards = this.parseCards(input);
     const initalCardMatches = cards.map((card) => 1);
-
     const matches = this.cardMatches(cards);
-    
+
     for (const [i, winCount] of matches.entries()) {
       for (let j = 1; j <= winCount; j++) {
         initalCardMatches[i + j] += initalCardMatches[i];
       }
     }
-    return initalCardMatches.reduce((acc, curr) => acc + curr, 0).toString()
-    ;
+    return initalCardMatches.reduce((acc, curr) => acc + curr, 0).toString();
   }
 }
 
